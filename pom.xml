@@ -29,11 +29,6 @@
         <org.slf4j.simpleLogger.defaultLogLevel>info</org.slf4j.simpleLogger.defaultLogLevel>
         <project.root.dir>${basedir}</project.root.dir>
         <target.root.dir>${basedir}/target</target.root.dir>
-        <!-- <deployment.suffix>-${user.name}</deployment.suffix> -->
-        <deployment.suffix></deployment.suffix>
-        <commit></commit>
-        <branch>a local</branch>
-        <proxy.description>commit ${commit} from ${branch} branch by ${user.name}</proxy.description>
     </properties>
 
     <!-- This is where you add the environment specific properties under various profile names -->
@@ -50,8 +45,6 @@
                 <apigee.username>${env.APIGEE_USERNAME}</apigee.username>
                 <apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
                 <apigee.options>update</apigee.options>
-                <api.northbound.domain>${env.API_DOMAIN_TEST}</api.northbound.domain>
-                <api.testtag>'not @wip'</api.testtag>
             </properties>
         </profile>
         <profile>
@@ -66,8 +59,6 @@
                 <apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
                 <apigee.options>override</apigee.options>
                 <apigee.override.delay>5</apigee.override.delay>
-                <api.northbound.domain>${env.API_DOMAIN_PROD}</api.northbound.domain>
-                <api.testtag>'not @wip and not @mock'</api.testtag>
             </properties>
         </profile>
     </profiles>
@@ -112,38 +103,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>com.google.code.maven-replacer-plugin</groupId>
-                <artifactId>replacer</artifactId>
-                <version>1.5.3</version>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>replace</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <regex>false</regex>
-                    <basedir>${target.root.dir}</basedir>
-                    <includes>
-                        <include>test/integration/config.json</include>
-                        <include>apiproxy/proxies/default.xml</include>
-                    </includes>
-                    <replacements>
-                        <replacement>
-                            <token>%api.northbound.domain%</token>
-                            <value>${api.northbound.domain}</value>
-                        </replacement>
-                        <replacement>
-                            <token>%deployment.suffix%</token>
-                            <value>${deployment.suffix}</value>
-                        </replacement>
-                    </replacements>
-                </configuration>
             </plugin>
 
             <plugin>
@@ -241,13 +200,13 @@
                             <goal>clean</goal>
                         </goals>
                     </execution>
-                    <!-- <execution> -->
-                        <!-- 	<id>auto-clean-install</id> -->
-                        <!-- 	<phase>install</phase> -->
-                        <!-- 	<goals> -->
-                            <!-- 		<goal>clean</goal> -->
-                            <!-- 	</goals> -->
-                        <!-- </execution> -->
+                    <execution>
+                        <id>auto-clean-install</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
