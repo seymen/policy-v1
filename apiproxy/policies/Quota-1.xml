@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Quota name="Quota-1">
+    <Allow count="5" countRef="request.header.allowed_quota"/>
+    <Interval ref="request.header.quota_count">1</Interval>
+    <Distributed>true</Distributed>
+    <Synchronous>true</Synchronous>
+    <TimeUnit ref="request.header.quota_timeout">hour</TimeUnit>
+    <Identifier ref="request.queryparam.ip"/>
+</Quota>

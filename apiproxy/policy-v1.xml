@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="policy-v1">
+    <Basepaths>/policy/v1</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1533036231539</CreatedAt>
+    <CreatedBy>ozanseymen@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>policy-v1</DisplayName>
+    <LastModifiedAt>1533037946298</LastModifiedAt>
+    <LastModifiedBy>ozanseymen@google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:fee610bdb97b9f807fccecd2a0e5f73c98a1164c06ef8d5069dd323586f475730792e0dabffe10dab9d98fab161242d33962ed088b2195f0e677da309062012e</ManifestVersion>
+    <Policies>
+        <Policy>Quota-1</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>
